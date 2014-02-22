@@ -1,0 +1,12 @@
+@mixin grumpy-background-image($svg, $fallback_png: "") {
+  @if $fallback_png != "" {
+
+  } @else {
+      $fallback_png: "grumpy-fallback/#{$svg}.png";
+      $svg: "#{$svg}.svg";
+  }
+  background-image: inline-image($svg, image/svg\+xml);
+  html.no-inlinesvg & {
+    background-image: image-url($fallback_png);
+  }
+}
